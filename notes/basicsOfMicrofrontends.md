@@ -78,6 +78,7 @@ module.exports = {
     ]
   };
 ```
+![containerWebpack](./assets/containerwebpackconfig.png)
 
 
 
@@ -90,3 +91,7 @@ module.exports = {
 - In the Host, import all the files you need from the remote.
 
 ![Products](./assets/UnderstandingModuleFederation.png)
+
+### Why microfrontend
+
+![whyMicroFrontend](./assets/whyMicroFrontEnd.png)
