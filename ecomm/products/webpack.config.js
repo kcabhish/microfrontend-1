@@ -1,13 +1,21 @@
 // generates html file with the webpack build in the path specified in output property
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 module.exports = {
-    mode: 'development', // or 'production' or 'none'
-    devServer: {
-      port: 8081
-    },
-    plugins: [
-      new HtmlWebpackPlugin ({
-        template: './public/index.html'
-      })
-    ]
-  };
+  mode: 'development', // or 'production' or 'none'
+  devServer: {
+    port: 8081,
+  },
+  plugins: [
+    new ModuleFederationPlugin({
+      name: 'products',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './ProductsIndex': './src/index',
+      },
+    }),
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+    }),
+  ],
+};
