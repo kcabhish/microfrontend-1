@@ -48,7 +48,7 @@ module.exports = {
 };
 ```
 
-## ℹ️ Things to Note
+### ℹ️ Things to Note
 
 When packages are shared, it will cause issues when trying to load the shared package in the isolated apps when running them individually.
 
@@ -73,5 +73,45 @@ To fix this we will need to use the dynamic import to load the contents by using
 3. in `index.js` file, load bootstrap using the dynamic import
 ```
 import ('./boostrap');
+```
+
+### Shared Module Versioning and Singleton loading
+
+In general, the module federation will respect the semantic versioning of the packages. Meaning if the packages in the lock file are prefixed with `^` or `~`, it will only load one package for all the remote apps in the host with semantic versioning.
+
+If the packages are not prefixed with the annotaions then the host will load all the versions that are used for the given package.
+
+>**FOR EXAMPLE** 
+>
+>in products it is using `faker: '3.9.0'` and in cart its using `faker:3.11.0`. The host will load both the packages.
+>
+>But, if the package in product is prefixed with `faker: ^3.9.0`, the host will load `3.11.0` as the common package for both.
+
+
+## Singleton Loading
+
+There are some cases where we cannot load a single 
+
+Below is the sample of enabling a singleton pattern for sharing dependencies between modules. This will ensure that there is only one version of `faker` in the host.
+
+```
+plugins: [
+    new ModuleFederationPlugin({
+      name: 'products',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './ProductsIndex': './src/index',
+      },
+      // shared: ['faker']
+      shared: {
+        faker: {
+          singleton: true
+        }
+      }
+    }),
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+    }),
+  ],
 ```
 
