@@ -112,6 +112,21 @@ plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
-  ],
+  ]
 ```
+
+## Sub-App Execution Context
+
+### Situation 1
+
+- we are running the file in development mode in isolation
+- we are using local index.html file
+- which has an element with the id which will be used to load the contents.
+- we want to immediately render our app into the element
+
+### Situation 2
+
+- we are running this file in development or production through the container app
+- there is no gurantee that an element with the same name in REMOTE app exists in the HOST.
+- we do not want to load the apps immediately because it will cause error.
 
