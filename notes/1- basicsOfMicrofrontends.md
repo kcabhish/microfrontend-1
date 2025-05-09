@@ -1,16 +1,19 @@
 # Notes
 
-## Section 1: The Basics of Microfrontends
+## Section 1: The Basics of Microfrontends & Module Federation
 
 ### Setting up Product (REMOTE)
 
 - create a `product` directory.
 - set it up as a `npm project` using `npm init -y`
 - install dependencies
+
 ```
 npm install webpack@5.88.0 webpack-cli@4.10.0 webpack-dev-server@4.7.4 html-webpack-plugin@5.5.0 nodemon --save-exact
 ```
+
 - install faker.js to mock products
+
 ```
 npm i faker@5.1.0 --save-exact
 ```
@@ -47,6 +50,7 @@ module.exports = {
 - create a `container`directory.
 - set it up as a `npm project` using `npm init -y`
 - install dependencies
+
 ```
 npm install webpack@5.88.0 webpack-cli@4.10.0 webpack-dev-server@4.7.4 html-webpack-plugin@5.5.0 nodemon --save-exact
 ```
@@ -78,9 +82,8 @@ module.exports = {
     ]
   };
 ```
-![containerWebpack](./assets/containerwebpackconfig.png)
 
-
+![containerWebpack](./assets/section1/containerwebpackconfig.png)
 
 - Designate one app as the HOST (Container) and one as the Remote (Products)
 - In the Remote, decide which module (files) you want to make available to other projects.
@@ -90,8 +93,8 @@ module.exports = {
 - In the Host, refactor the entry point to load asynchronously.
 - In the Host, import all the files you need from the remote.
 
-![Products](./assets/UnderstandingModuleFederation.png)
+![Products](./assets/section1/UnderstandingModuleFederation.png)
 
 ### Why microfrontend
 
-![whyMicroFrontend](./assets/whyMicroFrontEnd.png)
+![whyMicroFrontend](./assets/section1/whyMicroFrontEnd.png)

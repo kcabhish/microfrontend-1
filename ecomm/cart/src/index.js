@@ -1,5 +1,4 @@
-import faker from 'faker';
-
-const cartText = `<div> You have ${faker.random.number()} item`;
-
-document.querySelector('#dev-cart').innerHTML=cartText;
+/**
+ * Using dynamic import to load the contents asynchronously at runtime
+ */
+import ('./bootstrap');
