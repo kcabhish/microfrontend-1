@@ -1,30 +1,29 @@
 // This allows to merge different webpack configs
 const { merge } = require('webpack-merge');
-
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 const commonConfig = require('./webpack.common');
 const packageJson = require('../package.json');
-const port = 8081;
-const devConfig = {
-  mode: 'development',
-  devServer: {
-    port:8081,
-    historyApiFallback: true,
-  },
+
+// environment variable to load the AWS resource
+const domain = process.env.PRODUCTION_DOMAIN;
+
+const prodConfig = {
+  mode: 'production',
   output: {
-    publicPath: `http://localhost:8081/`,
+    filename: '[name].[contenthash].js',
+    publicPath: '/auth/latest/'
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'marketing',
+      name: 'auth',
       filename: 'remoteEntry.js',
       exposes: {
-        './MarketingApp': './src/bootstrap',
+        './AuthApp': './src/bootstrap',
       },
       shared: packageJson.dependencies,
     }),
   ],
 };
 
-// Prioritizes configs right to left on the parameters
-module.exports = merge(commonConfig, devConfig);
+// Prioritizes configs right to left on the parameters during merge
+module.exports = merge(commonConfig, prodConfig);

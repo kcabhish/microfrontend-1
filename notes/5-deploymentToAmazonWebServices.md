@@ -24,35 +24,20 @@
 Full updated instructions can be found below:
 
 1. Search for "IAM"
-
 2. Click "Create Individual IAM Users" and click "Manage Users"
-
 3. Click "Add User"
-
 4. Enter any name you’d like in the "User Name" field.
-
 5. Click "Next"
-
 6. Click "Attach Policies Directly"
-
 7. Use the search bar to find and tick AmazonS3FullAccess and CloudFrontFullAccess
-
 8. Click "Next"
-
 9. Click "Create user"
-
 10. Select the IAM user that was just created from the list of users
-
 11. Click "Security Credentials"
-
 12. Scroll down to find "Access Keys"
-
 13. Click "Create access key"
-
 14. Select "Command Line Interface (CLI)"
-
 15. Scroll down and tick the "I understand..." check box and click "Next"
-
 16. Copy and/or download the Access Key ID and Secret Access Key to use for deployment.
 
 
@@ -121,33 +106,18 @@ Full updated instructions can be found below:
 ### Create IAM user
 
 1. Search for "IAM"
-
 2. In the left sidebar, click Users under Access Management.
-
 3. Click "Create user"
-
 4. Enter any name you’d like in the "User Name" field.
-
 5. Click "Next"
-
 6. Click "Attach Policies Directly"
-
 7. Use the search bar to find and tick AmazonS3FullAccess and CloudFrontFullAccess
-
 8. Click "Next"
-
 9. Click "Create user"
-
 10. Select the IAM user that was just created from the list of users
-
 11. Click "Security Credentials"
-
 12. Scroll down to find "Access Keys"
-
 13. Click "Create access key"
-
 14. Select "Command Line Interface (CLI)"
-
 15. Scroll down and tick the "I understand..." check box and click "Next"
-
 16. Copy and/or download the Access Key ID and Secret Access Key to use for deployment.

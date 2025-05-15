@@ -1,17 +1,12 @@
 import React, { useRef, useEffect } from 'react';
-import { mount } from 'marketing/MarketingApp';
+import { mount } from 'auth/AuthApp';
 import { useHistory } from 'react-router-dom';
 
 /**
  * This component creates a ref for its element and passes it on mount to load the marketing app.
- * @returns
  */
-const MarketingApp = () => {
+const AuthApp = () => {
   const ref = useRef(null);
-  /**
-   * This is the copy of the browser history. Since we are using memory router in the sub-apps,
-   * we need to sync the information back the the browser history.
-   */
   const history = useHistory();
 
   useEffect(() => {
@@ -30,7 +25,8 @@ const MarketingApp = () => {
     const unlisten = history.listen(onParentNavigate);
     return () => unlisten(); // Clean up listener on unmount
   }, []);
+
   return <div ref={ref} />;
 };
 
-export { MarketingApp };
+export { AuthApp };
