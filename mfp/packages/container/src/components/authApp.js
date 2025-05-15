@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 /**
  * This component creates a ref for its element and passes it on mount to load the marketing app.
  */
-const AuthApp = () => {
+const AuthApp = ({onSignIn}) => {
   const ref = useRef(null);
   const history = useHistory();
 
@@ -20,6 +20,7 @@ const AuthApp = () => {
           history.push(nextPathname);
         }
       },
+      onSignIn
     });
 
     const unlisten = history.listen(onParentNavigate);
@@ -29,4 +30,4 @@ const AuthApp = () => {
   return <div ref={ref} />;
 };
 
-export { AuthApp };
+export default AuthApp;

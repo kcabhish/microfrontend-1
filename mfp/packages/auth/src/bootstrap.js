@@ -7,7 +7,7 @@ import { createMemoryHistory, createBrowserHistory } from 'history';
  * Mount function to start up the project
  * @param {*} el
  */
-const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
+const mount = (el, { onSignIn, onNavigate, defaultHistory, initialPath }) => {
   const history = defaultHistory || createMemoryHistory({
     // This will provide and initial entry for the memory history which will prevent the issue where users will have to click twice to load the 
     // page.
@@ -17,7 +17,7 @@ const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
     history.listen(onNavigate);
   }
 
-  ReactDOM.render(<App history={history} />, el);
+  ReactDOM.render(<App history={history} onSignIn={onSignIn}/>, el);
   return {
     onParentNavigate({pathname: nextPathname}) {
         const {pathname} = history.location;
